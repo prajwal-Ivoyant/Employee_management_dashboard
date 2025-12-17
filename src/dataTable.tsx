@@ -1,3 +1,8 @@
+import { useState } from "react";
+import "./dataTables.css";
+import { employees } from "./data";
+import { Table, Button } from "antd";
+import EmployeeModal from "./employeeModal";
 
 type Employee = {
   id: number;
@@ -6,35 +11,73 @@ type Employee = {
   department: string;
   status: string;
   action: string;
+  email: string;
+  phone: string;
+  location: string;
+  joinDate: string;
+  salary: number;
 };
 
-type Props ={
-    employee : Employee
-}
+export default function DataTable() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedEmployee, setSelectedEmployee] =
+    useState<Employee | null>(null);
 
+  const handleView = (employee: Employee) => {
+    setSelectedEmployee(employee);
+    setIsModalOpen(true);
+  };
 
-function fullDetails({employee} : Props){
-    alert("hi hello")
-}
-
-
-
-export default function DataTable({employee} : Props){
-
-
-if(!employee) return(
-    <div>"ERROR"</div>
-);
+  const columns = [
+    {
+      title: "SL no",
+      dataIndex: "id",
+      key: "id",
+    },
+    {
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
+    },
+    {
+      title: "Position",
+      dataIndex: "position",
+      key: "position",
+    },
+    {
+      title: "Department",
+      dataIndex: "department",
+      key: "department",
+    },
+    {
+      title: "Status",
+      dataIndex: "status",
+      key: "status",
+    },
+    {
+      title: "Action",
+      key: "action",
+      render: (_: any, record: Employee) => (
+        <Button type="link" onClick={() => handleView(record)}>
+          View
+        </Button>
+      ),
+    },
+  ];
 
   return (
-    <div className="table">
-      <div>{employee.id}</div>
-      <div>{employee.name}</div>
-      <div>{employee.position}</div>
-      <div>{employee.department}</div>
-      <div>{employee.status}</div>
-      <div onClick={()=>fullDetails(employee)}><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/view.png" alt="view"/>View</div>
-    </div>
-  );
+    <>
+      <Table
+        dataSource={employees}
+        columns={columns}
+        rowKey="id"
+      />
 
-}   
+      <EmployeeModal
+        open={isModalOpen}
+        employee={selectedEmployee}
+        onClose={() => setIsModalOpen(false)}
+      />
+    </>
+  );
+}

@@ -5,7 +5,12 @@ export const employees = [
     position: "Frontend Developer",
     department: "Engineering",
     status: "Active",
-    action: "Edit"
+    action: "Edit",
+    email: "prajwal.p@company.com",
+    phone: "9876543210",
+    location: "Bengaluru",
+    joinDate: "2023-07-15",
+    salary : 1000000
   },
   {
     id: 2,
@@ -13,7 +18,12 @@ export const employees = [
     position: "Backend Developer",
     department: "Engineering",
     status: "Inactive",
-    action: "View"
+    action: "View",
+    email: "ananya.r@company.com",
+    phone: "9876543211",
+    location: "Hyderabad",
+    joinDate: "2022-11-03",
+    salary : 1000000
   },
   {
     id: 3,
@@ -21,7 +31,12 @@ export const employees = [
     position: "UI/UX Designer",
     department: "Design",
     status: "Active",
-    action: "Edit"
+    action: "Edit",
+    email: "rahul.s@company.com",
+    phone: "9876543212",
+    location: "Mumbai",
+    joinDate: "2023-02-20",
+    salary : 1000000
   },
   {
     id: 4,
@@ -29,7 +44,12 @@ export const employees = [
     position: "Data Analyst",
     department: "Analytics",
     status: "On Leave",
-    action: "View"
+    action: "View",
+    email: "sneha.k@company.com",
+    phone: "9876543213",
+    location: "Pune",
+    joinDate: "2021-09-12",
+    salary : 1000000
   },
   {
     id: 5,
@@ -37,39 +57,11 @@ export const employees = [
     position: "HR Manager",
     department: "Human Resources",
     status: "Active",
-    action: "Edit"
-//   },
-//   {
-//   id: 6,
-//   name: "Amit",
-//   position: "Backend Engineer",
-//   department: "Engineering",
-//   status: "Active",
-//   action: "View"
-// },
-// {
-//   id: 7,
-//   name: "Neha",
-//   position: "QA Engineer",
-//   department: "Quality Assurance",
-//   status: "Inactive",
-//   action: "View"
-// },
-// {
-//   id: 8,
-//   name: "Karthik",
-//   position: "DevOps Engineer",
-//   department: "Infrastructure",
-//   status: "Active",
-//   action: "View"
-// },
-// {
-//   id: 9,
-//   name: "Pooja",
-//   position: "Product Manager",
-//   department: "Product",
-//   status: "Active",
-//   action: "View"
- }
-
+    action: "Edit",
+    email: "amit.v@company.com",
+    phone: "9876543214",
+    location: "Delhi",
+    joinDate: "2020-05-01",
+    salary : 1000000
+  }
 ];
