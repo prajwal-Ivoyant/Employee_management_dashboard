@@ -3,6 +3,7 @@ import "./dataTables.css";
 import { employees } from "./data";
 import { Table, Button } from "antd";
 import EmployeeModal from "./employeeModal";
+import { EyeOutlined } from '@ant-design/icons';
 
 type Employee = {
   id: number;
@@ -59,7 +60,7 @@ export default function DataTable() {
       key: "action",
       render: (_: any, record: Employee) => (
         <Button type="link" onClick={() => handleView(record)}>
-          View
+          <EyeOutlined />View
         </Button>
       ),
     },

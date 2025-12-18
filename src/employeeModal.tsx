@@ -3,7 +3,7 @@ import {
   MailOutlined,
   PhoneOutlined,
   EnvironmentOutlined,
-  ApartmentOutlined,
+   ApartmentOutlined,
   CalendarOutlined,
   DollarOutlined,
 } from "@ant-design/icons";
