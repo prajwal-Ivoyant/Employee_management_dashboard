@@ -3,7 +3,7 @@ import {
   MailOutlined,
   PhoneOutlined,
   EnvironmentOutlined,
-   ApartmentOutlined,
+  ApartmentOutlined,
   CalendarOutlined,
   DollarOutlined,
 } from "@ant-design/icons";
@@ -20,7 +20,7 @@ type Employee = {
   phone: string;
   location: string;
   joinDate: string;
-  salary : number;
+  salary: number;
 };
 
 const { Title, Text } = Typography;
@@ -31,8 +31,50 @@ type Props = {
   onClose: () => void;
 };
 
+type extraInfo = {
+  lable: string;
+  value: string | number;
+  icon: React.ReactNode;
+}
+
 export default function EmployeeModal({ open, employee, onClose }: Props) {
-  if (!employee) return null;
+  if (!employee) return <> </>;
+
+  const contactInfo: extraInfo[] = [
+    {
+      lable: "EMAIL",
+      value: employee.email,
+      icon: <MailOutlined />
+    },
+    {
+      lable: "PHONE",
+      value: employee.phone,
+      icon: <PhoneOutlined />
+    },
+    {
+      lable: "LOCATION",
+      value: employee.location,
+      icon: <EnvironmentOutlined />
+    }
+  ]
+
+  const EmploymentDetail: extraInfo[] = [
+    {
+      lable: "DEPARTMENT",
+      value: employee.department,
+      icon: <ApartmentOutlined />
+    },
+    {
+      lable: "JOIN DATE",
+      value: employee.joinDate,
+      icon: <CalendarOutlined />
+    },
+    {
+      lable: "SALARY",
+      value: employee.salary,
+      icon: <DollarOutlined />
+    }
+  ]
 
   return (
     <Modal
@@ -43,8 +85,8 @@ export default function EmployeeModal({ open, employee, onClose }: Props) {
       closeIcon
       className="employee-modal"
     >
-  
-      <div className="employee-header">
+
+      <div >
         <Title level={3}>{employee.name}</Title>
         <Text type="secondary">{employee.position}</Text>
       </div>
@@ -52,37 +94,22 @@ export default function EmployeeModal({ open, employee, onClose }: Props) {
 
       <Divider />
 
-     
+
       <Title level={4}>Contact Information</Title>
 
       <Space size="middle" className="info-row">
 
-        <Space>
-          <MailOutlined style={{ fontSize: 18, color: "#1677ff" }} />
-          <div>
-            <Text type="secondary">EMAIL</Text>
-            <br />
-            <Text strong>{employee.email}</Text>
-          </div>
-        </Space>
+        {contactInfo.map((item) => (
+          <Space>
+            {item.icon}
+            <div>
+              <Text type="secondary">{item.lable}</Text>
+              <br />
+              <Text strong>{item.value}</Text>
+            </div>
+          </Space>
+        ))}
 
-        <Space>
-          <PhoneOutlined style={{ fontSize: 18, color: "#1677ff" }} />
-          <div>
-            <Text type="secondary">PHONE</Text>
-            <br />
-            <Text strong>{employee.phone}</Text>
-          </div>
-        </Space>
-
-        <Space>
-          <EnvironmentOutlined style={{ fontSize: 18, color: "#1677ff" }} />
-          <div>
-            <Text type="secondary">LOCATION</Text>
-            <br />
-            <Text strong>{employee.location}</Text>
-          </div>
-        </Space>
       </Space>
 
       <Divider />
@@ -92,32 +119,18 @@ export default function EmployeeModal({ open, employee, onClose }: Props) {
 
       <Space size="middle" className="info-row">
 
-        <Space>
-          <ApartmentOutlined style={{ fontSize: 18, color: "#1677ff" }} />
-          <div>
-            <Text type="secondary">DEPARTMENT</Text>
-            <br />
-            <Text strong>{employee.department}</Text>
-          </div>
-        </Space>
+        {EmploymentDetail.map((item) => (
+          <Space>
+            {item.icon}
+            <div>
+              <Text type="secondary">{item.lable}</Text>
+              <br />
+              <Text strong>{item.value}</Text>
+            </div>
+          </Space>
+        ))}
 
-        <Space>
-          <CalendarOutlined style={{ fontSize: 18, color: "#1677ff" }} />
-          <div>
-            <Text type="secondary">JOIN DATE</Text>
-            <br />
-            <Text strong>{employee.joinDate}</Text>
-          </div>
-        </Space>
 
-        <Space>
-          <DollarOutlined style={{ fontSize: 18, color: "#1677ff" }} />
-          <div>
-            <Text type="secondary">SALARY</Text>
-            <br />
-            <Text strong>{employee.salary}</Text>
-          </div>
-        </Space>
       </Space>
     </Modal>
   );
