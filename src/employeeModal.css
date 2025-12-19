@@ -1,0 +1,73 @@
+/* ===== Modal Container ===== */
+.employee-modal .ant-modal-content {
+  border-radius: 14px;
+  padding: 24px;
+}
+
+/* ===== Header ===== */
+.employee-header {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.employee-header h3 {
+  margin-bottom: 0;
+}
+
+/* ===== Section titles ===== */
+.employee-modal h4 {
+  margin-bottom: 12px;
+  color: #1f2937;
+}
+
+/* ===== Info rows ===== */
+.info-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ===== Info cards ===== */
+.info-row .ant-space {
+  background: #f9fafb;
+  padding: 14px 16px;
+  border-radius: 10px;
+  min-width: 200px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+/* ===== Icons ===== */
+.employee-modal .anticon {
+  background: #e0ecff;
+  padding: 8px;
+  border-radius: 50%;
+}
+
+/* ===== Labels ===== */
+.employee-modal .ant-typography-secondary {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+/* ===== Divider spacing ===== */
+.employee-modal .ant-divider {
+  margin: 20px 0;
+}
+
+/* ===== Salary highlight ===== */
+.employee-modal .salary {
+  color: #16a34a;
+  font-weight: 700;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .info-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .info-row .ant-space {
+    width: 100%;
+  }
+}
