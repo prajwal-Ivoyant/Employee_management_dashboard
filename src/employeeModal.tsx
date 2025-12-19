@@ -7,6 +7,7 @@ import {
   CalendarOutlined,
   DollarOutlined,
 } from "@ant-design/icons";
+import './employeeModal.css'
 
 type Employee = {
   id: number;
@@ -38,21 +39,24 @@ export default function EmployeeModal({ open, employee, onClose }: Props) {
       open={open}
       onCancel={onClose}
       footer={null}
-      width={700}
+      width={800}
       closeIcon
+      className="employee-modal"
     >
   
-      <Title level={3} style={{ marginBottom: 0 }}>
-        {employee.name}
-      </Title>
-      <Text type="secondary">{employee.position}</Text>
+      <div className="employee-header">
+        <Title level={3}>{employee.name}</Title>
+        <Text type="secondary">{employee.position}</Text>
+      </div>
+
 
       <Divider />
 
      
       <Title level={4}>Contact Information</Title>
 
-      <Space direction="vertical" size="middle">
+      <Space size="middle" className="info-row">
+
         <Space>
           <MailOutlined style={{ fontSize: 18, color: "#1677ff" }} />
           <div>
@@ -86,7 +90,8 @@ export default function EmployeeModal({ open, employee, onClose }: Props) {
 
       <Title level={4}>Employment Details</Title>
 
-      <Space direction="vertical" size="middle">
+      <Space size="middle" className="info-row">
+
         <Space>
           <ApartmentOutlined style={{ fontSize: 18, color: "#1677ff" }} />
           <div>

@@ -1,7 +1,7 @@
 .container{
     width: 99vw;
     height: 90vh;
-    background-color: rgba(255, 255, 255, 0.927);
+   background-color: transparent;
     border-radius: 10px;
     padding-left: 50px;
     padding-right: 50px;

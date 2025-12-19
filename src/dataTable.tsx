@@ -50,11 +50,44 @@ export default function DataTable() {
       dataIndex: "department",
       key: "department",
     },
+    
     {
-      title: "Status",
-      dataIndex: "status",
-      key: "status",
-    },
+  title: "Status",
+  dataIndex: "status",
+  key: "status",
+  render: (status: string) => {
+    let color = "";
+    let textColor = "";
+
+    switch (status.toLowerCase()) {
+      case "active":
+        color = "status-active";
+        textColor = "#16a34a"; 
+        break;
+      case "inactive":
+        color = "status-inactive";
+        textColor = "#f59e0b"; 
+        break;
+      case "on leave":
+      case "leave":
+        color = "status-leave";
+        textColor = "#dc2626"; 
+        break;
+      default:
+        color = "status-default";
+        textColor = "#6b7280";
+    }
+
+    return (
+      <Button className={color} style={{ color: textColor }} size="small">
+        {status}
+      </Button>
+    );
+  },
+},
+
+    
+
     {
       title: "Action",
       key: "action",
@@ -72,6 +105,7 @@ export default function DataTable() {
         dataSource={employees}
         columns={columns}
         rowKey="id"
+        
       />
 
       <EmployeeModal
