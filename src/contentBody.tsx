@@ -3,7 +3,7 @@ import './contentBody.css'
 import DataTable from './dataTable';
 
 
-export default function ContentBody(){
+export default function ContentBody() {
     return (
         <div className="container">
 
@@ -13,7 +13,7 @@ export default function ContentBody(){
             </div>
 
             <DataTable />
-          
+
 
         </div>
     );

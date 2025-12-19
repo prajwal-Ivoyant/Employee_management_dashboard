@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./dataTables.css";
 import { employees } from "./data";
-import { Table, Button } from "antd";
+import { Table, Button, Tag } from "antd";
 import EmployeeModal from "./employeeModal";
 import { EyeOutlined } from '@ant-design/icons';
 
@@ -50,49 +50,44 @@ export default function DataTable() {
       dataIndex: "department",
       key: "department",
     },
-    
+
     {
-  title: "Status",
-  dataIndex: "status",
-  key: "status",
-  render: (status: string) => {
-    let color = "";
-    let textColor = "";
+      title: "Status",
+      dataIndex: "status",
+      key: "status",
+      render: (status: string) => {
+        let color: "success" | "warning" | "error" | "default";
 
-    switch (status.toLowerCase()) {
-      case "active":
-        color = "status-active";
-        textColor = "#16a34a"; 
-        break;
-      case "inactive":
-        color = "status-inactive";
-        textColor = "#f59e0b"; 
-        break;
-      case "on leave":
-      case "leave":
-        color = "status-leave";
-        textColor = "#dc2626"; 
-        break;
-      default:
-        color = "status-default";
-        textColor = "#6b7280";
-    }
+        switch (status.toLowerCase()) {
+          case "active":
+            color = "success";
+            break;
+          case "inactive":
+            color = "warning";
+            break;
+          case "on leave":
+          case "leave":
+            color = "error";
+            break;
+          default:
+            color = "default";
+        }
 
-    return (
-      <Button className={color} style={{ color: textColor }} size="small">
-        {status}
-      </Button>
-    );
-  },
-},
+        return (
+          <Tag color={color}>
+            {status.toUpperCase()}
+          </Tag>
+        );
+      },
+    },
 
-    
+
 
     {
       title: "Action",
       key: "action",
       render: (_: any, record: Employee) => (
-        <Button type="link" onClick={() => handleView(record)}>
+        <Button type="link" onClick={() => handleView(record)} icon>
           <EyeOutlined />View
         </Button>
       ),
@@ -105,14 +100,15 @@ export default function DataTable() {
         dataSource={employees}
         columns={columns}
         rowKey="id"
-        
+
       />
 
-      <EmployeeModal
+      {isModalOpen && <EmployeeModal
         open={isModalOpen}
         employee={selectedEmployee}
         onClose={() => setIsModalOpen(false)}
-      />
+      />}
+
     </>
   );
 }
